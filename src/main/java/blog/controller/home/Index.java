@@ -1,4 +1,4 @@
-package blog.dev.controller.home;
+package blog.controller.home;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -6,8 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class Index {
 
+
+    // 首页
     @RequestMapping("/")
-    String home() {
+    String index() {
+        // 获取数据
+
         return "home/index";
     }
 
