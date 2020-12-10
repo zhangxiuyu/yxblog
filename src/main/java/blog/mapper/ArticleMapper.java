@@ -33,4 +33,6 @@ public interface ArticleMapper {
     @Select("select * from article where id in(select article_id from article_type where id)")
     List<ArticleModel> getArticleOnType();
 
+    @Select("select * from article where id = ${id}")
+    List<ArticleMapper> getArticleOne(String id);
 }

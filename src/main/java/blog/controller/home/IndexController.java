@@ -12,7 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class Index {
+public class IndexController {
 
     @Autowired
     private ArticleMapper articleMapper;
@@ -36,7 +36,6 @@ public class Index {
         mmap.put("article",article);
         mmap.put("article_label",articleLabelModelList);
         mmap.put("article_type",articleTypeModelList);
-        System.out.println(article.toString());
         return "home/index";
     }
 
