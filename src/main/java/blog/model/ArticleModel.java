@@ -1,10 +1,9 @@
 package blog.model;
 
-import blog.domain.BaseModel;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * (Article)实体类
@@ -12,7 +11,7 @@ import java.util.Date;
  * @author makejava
  * @since 2020-12-08 11:26:32
  */
-public class ArticleModel extends BaseModel {
+public class ArticleModel {
     /**
      * 文章id
      */
@@ -32,15 +31,16 @@ public class ArticleModel extends BaseModel {
     /**
      * 创建时间
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
-    private Date created_at;
+
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private LocalDateTime created_at;
     /**
      * 更新时间
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
-    private Date updated_at;
+
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private LocalDateTime updated_at;
     /**
      * 是否置顶 1 置顶 0 不置顶
      */
@@ -50,48 +50,10 @@ public class ArticleModel extends BaseModel {
      */
     private Object state;
 
-    public Date getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-
-    public Date getUpdated_at() {
-        return updated_at;
-    }
-
-    public void setUpdated_at(Date updated_at) {
-        this.updated_at = updated_at;
-    }
-
-    public Object getShow_num() {
-        return show_num;
-    }
-
-    public void setShow_num(Object show_num) {
-        this.show_num = show_num;
-    }
-
     /**
-     *
      * 观看数量
      */
     private Object show_num;
-
-
-
-    public Object getShowNum() {
-        return show_num;
-    }
-
-    public void setShowNum(Object showNum) {
-        this.show_num = showNum;
-    }
-
-
 
     public Integer getId() {
         return id;
@@ -125,15 +87,21 @@ public class ArticleModel extends BaseModel {
         this.con = con;
     }
 
-    public Date getCreatedAt() {
+    public LocalDateTime getCreated_at() {
         return created_at;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.created_at = createdAt;
+    public void setCreated_at(LocalDateTime created_at) {
+        this.created_at = created_at;
     }
 
+    public LocalDateTime getUpdated_at() {
+        return updated_at;
+    }
 
+    public void setUpdated_at(LocalDateTime updated_at) {
+        this.updated_at = updated_at;
+    }
 
     public Object getTop() {
         return top;
@@ -151,6 +119,13 @@ public class ArticleModel extends BaseModel {
         this.state = state;
     }
 
+    public Object getShow_num() {
+        return show_num;
+    }
+
+    public void setShow_num(Object show_num) {
+        this.show_num = show_num;
+    }
 
     @Override
     public String toString() {

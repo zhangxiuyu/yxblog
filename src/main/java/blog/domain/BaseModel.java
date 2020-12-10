@@ -10,11 +10,7 @@ public class BaseModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /** 搜索值 */
-    private String searchValue;
 
-    /** 创建者 */
-    private String createBy;
 
     /** 创建时间 */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -30,51 +26,39 @@ public class BaseModel implements Serializable {
     /** 备注 */
     private String remark;
 
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
-    }
-
-    public String getSearchValue() {
-        return searchValue;
-    }
-
-    public void setSearchValue(String searchValue) {
-        this.searchValue = searchValue;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public Date getCreateTime() {
         return createTime;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public String getRemark() {
-        return remark;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public String getUpdateBy() {
         return updateBy;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy;
     }
 
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }

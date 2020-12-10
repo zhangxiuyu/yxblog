@@ -163,6 +163,6 @@
     -ms-flex-align: center;
     align-items: center;
 }
-.post-like span{
+.post-like .post-span{
     margin-left: 25px;
 }
