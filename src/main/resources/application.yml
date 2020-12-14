@@ -20,4 +20,7 @@ spring:
 
 yunxiu:
   header:
+  #页面头
     title: 云秀
+  #每页数量
+  pageSize: 1

@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!--head头部件-->
 <head th:replace="~{common/commons_header :: common_header(${title})}">
 <body>
 
@@ -10,24 +8,22 @@
 
 <div class="container con">
 
-<!--左边-->
-    <div th:replace="~{common/commons::article_type}"></div>
-
-<!--不分页文章-->
+<!--分页文章-->
     <div th:replace="~{common/commons::article_not_page}"></div>
 
-
-<!--右边-->
+<!--右侧-->
     <div th:replace="~{common/commons::article_label}"></div>
 
 </div>
 
-
 <!--底部-->
 <div th:replace="~{common/commons::footer}"></div>
 
+
+
+
 </body>
 <style>
-
+    /*$(window).height()*/
 </style>
 </html>

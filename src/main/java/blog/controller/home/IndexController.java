@@ -33,6 +33,7 @@ public class IndexController {
         List<ArticleLabelModel> articleLabelModelList = articleMapper.getArticleLabel();
         List<ArticleTypeModel> articleTypeModelList = articleMapper.getArticType();
         mmap.put("title",this.getTitle());
+        mmap.put("mu","index");
         mmap.put("article",article);
         mmap.put("article_label",articleLabelModelList);
         mmap.put("article_type",articleTypeModelList);
