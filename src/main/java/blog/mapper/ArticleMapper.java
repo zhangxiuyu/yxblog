@@ -22,8 +22,8 @@ public interface ArticleMapper {
     List<ArticleLabelModel> getArticleLabel();
 
     // 获取标签的文章
-    @Select("select * from article where id in(select article_id from article_label where id) and state =1  order by sort  DESC")
-    List<ArticleModel> getArticleOnLabel();
+    @Select("select * from article where id in(select article_id from article_on_label where label_id = ${label_id}) and state =1  order by sort  DESC")
+    List<ArticleModel> getArticleOnLabel(int label_id);
 
 
     // 获取文章分类表
@@ -31,8 +31,8 @@ public interface ArticleMapper {
     List<ArticleTypeModel> getArticType();
 
     // 获取分类的文章
-    @Select("select * from article where id in(select article_id from article_type where id) and state =1  order by sort  DESC")
-    List<ArticleModel> getArticleOnType();
+    @Select("select * from article where id in(select article_id from article_on_type where type_id = ${type_id}) and state =1  order by sort  DESC")
+    List<ArticleModel> getArticleOnType(int type_id);
 
     // 获取文章详情
     @Select("select * from article where id = ${id} and state =1")

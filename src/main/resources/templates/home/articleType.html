@@ -46,11 +46,11 @@
         </ul>
 
         <ul class="pagination pagination-sm" th:if="${article.total != 0}">
-            <li><a href="/articleList">&laquo;</a></li>
+            <li><a th:href="@{'/article_type/' + ${type_id}}">&laquo;</a></li>
             <li th:class="${article.pageNum == i}?'active':''" th:each="i:${#numbers.sequence(1, article.pages)}">
-                <a th:href="@{'/articleList/' + ${i}}" th:text="${i}"></a>
+                <a th:href="@{'/article_type/'+ ${type_id} + '/'  + ${i}}" th:text="${i}"></a>
             </li>
-            <li><a th:href="@{'/articleList/' + ${article.pages}}">&raquo;</a></li>
+            <li><a th:href="@{'/article_type/' + ${type_id} + '/' + ${article.pages}}">&raquo;</a></li>
         </ul>
     </div>
 

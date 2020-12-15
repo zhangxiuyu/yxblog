@@ -4,7 +4,6 @@ import blog.mapper.ArticleMapper;
 import blog.model.ArticleLabelModel;
 import blog.model.ArticleModel;
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -53,10 +52,6 @@ public class ArticleController {
 
         PageHelper.startPage(page,this.pageSize);
         List<ArticleModel> article = articleMapper.getArticle();
-        // 分页数据
-//        PageInfo<ArticleModel> pageInfo = new PageInfo<ArticleModel>(article);
-        System.out.println(article);
-
         mmap.put("title","文章");
         mmap.put("mu","article");
         mmap.put("article",article);
@@ -83,7 +78,6 @@ public class ArticleController {
         mmap.put("mu","article");
         mmap.put("article",article);
         mmap.put("article_label",articleLabelModelList);
-        System.out.println(article.size());
 
         return "home/articleList";
     }
@@ -97,11 +91,33 @@ public class ArticleController {
     @RequestMapping("/articleHot")
     String getArticleHot(ModelMap mmap){
         List<ArticleLabelModel> articleLabelModelList = articleMapper.getArticleLabel();
+
+        PageHelper.startPage(1,this.pageSize);
         List<ArticleModel> article = articleMapper.getArticleHot();
 
         mmap.put("mu","articleHot");
         mmap.put("article",article);
         mmap.put("article_label",articleLabelModelList);
-        return "home/articleList";
+        return "home/articleHot";
+    }
+
+
+    /**
+     *  热门文章
+     * @param mmap
+     * @return
+     */
+    @RequestMapping("/articleHot/{page}")
+    String getArticleHotPage(@PathVariable(name = "page") int page,ModelMap mmap){
+        List<ArticleLabelModel> articleLabelModelList = articleMapper.getArticleLabel();
+
+        PageHelper.startPage(page,this.pageSize);
+        List<ArticleModel> article = articleMapper.getArticleHot();
+
+        mmap.put("mu","articleHot");
+        mmap.put("article",article);
+        mmap.put("article_label",articleLabelModelList);
+
+        return "home/articleHot";
     }
 }
