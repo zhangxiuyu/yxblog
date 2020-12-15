@@ -44,12 +44,32 @@
                         </li>
 
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#">登录</a>
-                        </li>
+<!--                    <ul class="nav navbar-nav navbar-right">-->
+<!--                        <li>-->
+<!--                            <a href="#">登录</a>-->
+<!--                        </li>-->
 
-                    </ul>
+<!--                    </ul>-->
+                    <div class="dropdown navbar-right">
+                        <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">登录
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="https://github.com/login/oauth/authorize?client_id=cee7169b77fc23c392a0&state=STATE&redirect_uri=http://127.0.0.1:8088/gitHub">GitHub</a>
+                            </li>
+                            <li role="presentation" class="divider"></li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#">微博</a>
+                            </li>
+                            <li role="presentation" class="divider"></li>
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="#">QQ</a>
+                            </li>
+
+
+                        </ul>
+                    </div>
                 </div>
 
             </nav>

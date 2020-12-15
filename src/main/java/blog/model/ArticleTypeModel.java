@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @since 2020-12-10 15:23:52
  */
 public class ArticleTypeModel implements Serializable {
-    private static final long serialVersionUID = 138369515409915949L;
+
     /**
      * 主键id
      */

@@ -31,7 +31,6 @@ public class ArticleLabelController {
         PageHelper.startPage(1,this.pageSize);
         List<ArticleModel> article = articleMapper.getArticleOnLabel(label_id);
 
-        System.out.println(article);
 
         mmap.put("type_id",label_id);
         mmap.put("article",article);

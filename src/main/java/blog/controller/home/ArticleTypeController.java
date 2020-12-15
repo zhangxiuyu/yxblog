@@ -29,7 +29,7 @@ public class ArticleTypeController {
 
         PageHelper.startPage(1,this.pageSize);
         List<ArticleModel> article = articleMapper.getArticleOnType(type_id);
-        System.out.println(article);
+
         mmap.put("type_id",type_id);
         mmap.put("article",article);
         mmap.put("article_label",articleLabelModelList);
