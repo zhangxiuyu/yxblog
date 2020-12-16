@@ -8,13 +8,17 @@ public class QQConstants {
 
 
     @Value("${yunxiu.qq.app_id}")
-    String app_id;
+    private String app_id;
 
     @Value("${yunxiu.qq.app_key}")
-    String app_key;
+    private String app_key;
 
     @Value("${yunxiu.qq.callback}")
-    String callback;
+    private String callback;
+
+
+    public static final String OPENID_URL = "https://graph.qq.com/oauth2.0/me?access_token=";
+
 
 
     public String getApp_id() {

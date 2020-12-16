@@ -1,13 +1,13 @@
 package blog.controller.home;
 
 
+import blog.service.QQAuth;
 import blog.service.QQConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class QQController {
@@ -15,9 +15,8 @@ public class QQController {
     @Autowired
     QQConstants qqConstants;
 
-    @RequestMapping("QQ")
-    String QQ()
-    {
+    @RequestMapping("/QQ")
+    String QQ(){
         System.out.println(qqConstants.getApp_id());
 
         String qqAppId = "101770145";
@@ -30,23 +29,20 @@ public class QQController {
 
 
 
-    @RequestMapping("QQLogin")
-    void  QQLogin(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    @RequestMapping("/QQLogin")
+    String  QQLogin(HttpServletRequest request) throws Exception {
 
-        // QQ登录有点特殊，参数放在#后面，后台无法获取#后面的参数，只能用JS做中间转换
-        String html =   "<!DOCTYPE html>" +
-                "<html lang=\"zh-cn\">" +
-                "<head>" +
-                "	<title>QQ登录重定向页</title>" +
-                "	<meta charset=\"utf-8\"/>" +
-                "</head>" +
-                "<body>" +
-                "	<script type=\"text/javascript\">" +
-                "	location.href = location.href.replace('#', '&').replace('auth_qq', 'auth_qq_redirect');" +
-                "	</script>" +
-                "</body>" +
-                "</html>";
-        response.getWriter().print(html);
+        String access_token = request.getParameter("access_token");
+        String state = request.getParameter("state");
+        String expires_in = request.getParameter("expires_in");
+
+        // 获取openid
+        String Openid  = QQAuth.getOpenid(access_token);
+        System.out.println(Openid);
+
+        return "redirect:/";
+
+//        String openid = QQAuth.getUserInfo(url);
     }
 
 }
