@@ -23,6 +23,27 @@ public class GitHubController {
     UserMapper userMapper;
 
 
+    /**
+     *  github登录 跳转地址
+     * @return
+     */
+    @RequestMapping("/githubUrl")
+    public String githubUrl()
+    {
+
+        String url = GitHubConstants.CODE_URL.replace("CLIENT_ID",GitHubConstants.getClient_id())
+                .replace("CALLBACK",GitHubConstants.getCallback());
+
+        return "redirect:" + url;
+    }
+
+
+    /**
+     * github 回调地址
+     * @param code
+     * @param state
+     * @return
+     */
     @RequestMapping("/gitHub")
     public String callback(String code, String state) {
         //获取到code和state
@@ -33,9 +54,9 @@ public class GitHubController {
             try {
                 //拿到我们的code,去请求token
                 //发送一个请求到
-                String token_url = GitHubConstants.TOKEN_URL.replace("CLIENT_ID", GitHubConstants.CLIENT_ID)
-                        .replace("CLIENT_SECRET", GitHubConstants.CLIENT_SECRET)
-                        .replace("CALLBACK", GitHubConstants.CALLBACK)
+                String token_url = GitHubConstants.TOKEN_URL.replace("CLIENT_ID", GitHubConstants.getClient_id())
+                        .replace("CLIENT_SECRET", GitHubConstants.getClient_secret())
+                        .replace("CALLBACK", GitHubConstants.getCallback())
                         .replace("CODE", code);
 
                 String responseStr = HttpClientUtils.doGet(token_url);
@@ -46,7 +67,7 @@ public class GitHubController {
                 //根据token发送请求获取登录人的信息
                 String userinfo_url = GitHubConstants.USER_INFO_URL.replace("TOKEN", token);
 
-                responseStr = HttpClientUtils.doGetUserInfo(userinfo_url,token);//json
+                responseStr = HttpClientUtils.doGetGetHubUserInfo(userinfo_url,token);//json
 
                 Map<String, String> responseMap = HttpClientUtils.parseResponseEntityJSON(responseStr);
                 //System.out.println("登录用户信息:" + responseMap);//responseMap里面保存着用户登录信息
@@ -73,7 +94,7 @@ public class GitHubController {
 
                 return "redirect:/";
             }catch (Exception e){
-                System.out.println("err:" + e.getMessage());
+                System.out.println("github login err:" + e.getMessage());
                 return "redirect:/";
             }
 

@@ -1,13 +1,49 @@
 package blog.service;
 
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+
+
+@Configuration
 public class GitHubConstants {
 
-    public static final String CLIENT_ID = "cee7169b77fc23c392a0"; // TODO 修改成自己的
 
-    public static final String CLIENT_SECRET = "49347f6e0db42a00846275627853a328938ebf01";  // TODO 修改成自己的
+    private static String client_id;
 
-    public static final String CALLBACK = "http://127.0.0.1:8088/gitHub";  // TODO 修改成自己的  [注意：callback要和注册的回调路径保持一致  否则登录授权之后会报NullPointerException]
+
+    private static String client_secret;
+
+
+    private static String callback;
+
+
+    public static String getClient_id() {
+        return client_id;
+    }
+
+    public static String getClient_secret() {
+        return client_secret;
+    }
+
+    public static String getCallback() {
+        return callback;
+    }
+
+    @Value("${yunxiu.github.client_id}")
+    public  void setClient_id(String client_id) {
+        GitHubConstants.client_id = client_id;
+    }
+
+    @Value("${yunxiu.github.client_secret}")
+    public  void setClient_secret(String client_secret) {
+        GitHubConstants.client_secret = client_secret;
+    }
+
+    @Value("yunxiu.github.callback")
+    public  void setCallback(String callback) {
+        GitHubConstants.callback = callback;
+    }
 
     //获取code的url
     public static final String CODE_URL = "https://github.com/login/oauth/authorize?client_id=CLIENT_ID&state=STATE&redirect_uri=CALLBACK";

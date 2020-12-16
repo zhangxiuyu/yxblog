@@ -36,7 +36,7 @@ public class HttpClientUtils {
     }
 
 
-    public static String doGetUserInfo(String url,String token)throws Exception{
+    public static String doGetGetHubUserInfo(String url,String token)throws Exception{
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet(url);
         httpGet.addHeader("Authorization","token " + token);
