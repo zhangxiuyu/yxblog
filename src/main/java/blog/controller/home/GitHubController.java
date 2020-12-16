@@ -6,10 +6,13 @@ import blog.service.GitHubConstants;
 import blog.service.HttpClientUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -21,10 +24,10 @@ public class GitHubController {
 
 
     @RequestMapping("/gitHub")
-    public String callback(String code, String state) throws Exception {
+    public String callback(String code, String state) {
         //获取到code和state
-        System.out.println("code:" + code);
-        System.out.println("state:" + state);
+//        System.out.println("code:" + code);
+//        System.out.println("state:" + state);
 
         if (!StringUtils.isEmpty(code) && !StringUtils.isEmpty(state)) {
             try {
@@ -49,18 +52,29 @@ public class GitHubController {
                 //System.out.println("登录用户信息:" + responseMap);//responseMap里面保存着用户登录信息
                 //System.out.println("获取登录用户的用户名:" + responseMap.get("login"));
 
-                // 保存用户信息
-                UserModel userModel = new UserModel();
-                userModel.setEmail(responseMap.get("email"));
-                userModel.setName(responseMap.get("login"));
-                userModel.setAvatarUrl(responseMap.get("avatar_url"));
-                userModel.setOpenid(responseMap.get("id"));
-                userModel.setCreatedAt(Date.from());
-                userMapper.inst(userModel);
+                Integer openid = Integer.parseInt(responseMap.get("id"));
+                List<UserModel> userModels = userMapper.OneOpenid(openid);
 
+                // 是否存在
+                if (CollectionUtils.isEmpty(userModels)){
+                    // 保存用户信息
+                    UserModel userModel = new UserModel();
+                    userModel.setEmail(responseMap.get("email"));
+                    userModel.setName(responseMap.get("login"));
+                    userModel.setAvatarUrl(responseMap.get("avatar_url"));
+                    userModel.setOpenid(openid);
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+                    String date = df.format(new Date());
+                    userModel.setCreatedAt(date);
+                    userModel.setUpdatedAt(date);
 
+                    userMapper.insert(userModel);
+                }
+
+                return "redirect:/";
             }catch (Exception e){
-                return null;
+                System.out.println("err:" + e.getMessage());
+                return "redirect:/";
             }
 
         }

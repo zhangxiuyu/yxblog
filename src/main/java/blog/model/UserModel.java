@@ -1,7 +1,6 @@
 package blog.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * (User)实体类
@@ -22,7 +21,7 @@ public class UserModel implements Serializable {
     /**
      * 授权id
      */
-    private String openid;
+    private Integer openid;
     /**
      * 头像地址
      */
@@ -34,11 +33,11 @@ public class UserModel implements Serializable {
     /**
      * 创建时间
      */
-    private Date createdAt;
+    private String createdAt;
     /**
      * 修改时间
      */
-    private Date updatedAt;
+    private String updatedAt;
 
 
     public Integer getId() {
@@ -57,11 +56,11 @@ public class UserModel implements Serializable {
         this.name = name;
     }
 
-    public String getOpenid() {
+    public Integer getOpenid() {
         return openid;
     }
 
-    public void setOpenid(String openid) {
+    public void setOpenid(Integer openid) {
         this.openid = openid;
     }
 
@@ -81,19 +80,19 @@ public class UserModel implements Serializable {
         this.email = email;
     }
 
-    public Date getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
+    public String getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
 
