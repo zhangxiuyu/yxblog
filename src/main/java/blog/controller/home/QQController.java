@@ -27,10 +27,9 @@ public class QQController {
 
     @RequestMapping("/QQ")
     String QQ(){
-        System.out.println(QQConstants.getApp_id());
 
-        String qqAppId = "101770145";
-        String qqAuthPath = "http://127.0.0.1:8088/QQLogin";
+        String qqAppId = QQConstants.getApp_id();
+        String qqAuthPath = QQConstants.getCallback();
         String state = "fjdslfjsdlkfd";
         String url = "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id="+qqAppId+"&redirect_uri="+qqAuthPath+"&state=" + state;
 

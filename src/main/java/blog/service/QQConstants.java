@@ -31,7 +31,7 @@ public class QQConstants {
         QQConstants.app_id = app_id;
     }
 
-    static String getApp_key() {
+    public static  String getApp_key() {
         return app_key;
     }
 
@@ -40,7 +40,7 @@ public class QQConstants {
         QQConstants.app_key = app_key;
     }
 
-    static String getCallback() {
+    public static String getCallback() {
         return callback;
     }
 

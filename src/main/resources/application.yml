@@ -33,4 +33,7 @@ yunxiu:
     app_id: 101770145
     app_key: 3374e799e4424ae45de97d2c1aee42cf
     callback: http://127.0.0.1:8088/QQLogin
-
+  weibo:
+    app_key: 3317738802
+    app_secret: a3642b9b49c3fee71cfed66541810198
+    callback: http://127.0.0.1:8088/weiboLogin
