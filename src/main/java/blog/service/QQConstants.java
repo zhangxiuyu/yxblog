@@ -7,42 +7,46 @@ import org.springframework.stereotype.Service;
 public class QQConstants {
 
 
-    @Value("${yunxiu.qq.app_id}")
-    private String app_id;
 
-    @Value("${yunxiu.qq.app_key}")
-    private String app_key;
-
-    @Value("${yunxiu.qq.callback}")
-    private String callback;
+    private static String app_id;
 
 
-    public static final String OPENID_URL = "https://graph.qq.com/oauth2.0/me?access_token=";
+    private static String app_key;
 
 
+    private static String callback;
 
-    public String getApp_id() {
+
+    static final String OPENID_URL = "https://graph.qq.com/oauth2.0/me?access_token=";
+
+    static final String USER_INFO_URL = "https://graph.qq.com/user/get_user_info?access_token=ACCESS_TOKEN&oauth_consumer_key=APP_ID&openid=OPENID";
+
+    public static String getApp_id() {
         return app_id;
     }
 
+
+    @Value("${yunxiu.qq.app_id}")
     public void setApp_id(String app_id) {
-        this.app_id = app_id;
+        QQConstants.app_id = app_id;
     }
 
-    public String getApp_key() {
+    static String getApp_key() {
         return app_key;
     }
 
+    @Value("${yunxiu.qq.app_key}")
     public void setApp_key(String app_key) {
-        this.app_key = app_key;
+        QQConstants.app_key = app_key;
     }
 
-    public String getCallback() {
+    static String getCallback() {
         return callback;
     }
 
+    @Value("${yunxiu.qq.callback}")
     public void setCallback(String callback) {
-        this.callback = callback;
+        QQConstants.callback = callback;
     }
 
 

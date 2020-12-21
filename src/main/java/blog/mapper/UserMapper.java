@@ -13,13 +13,13 @@ import java.util.List;
 public interface UserMapper {
 
     // 插入数据
-    @Insert("insert into user (name,openid,avatar_url,email,created_at,updated_at) values ('${name}','${openid}','${avatarUrl}','${email}','${createdAt}','${updatedAt}')")
+    @Insert("insert into user (name,openid,avatar_url,email,created_at,updated_at,type) values ('${name}','${openid}','${avatarUrl}','${email}','${createdAt}','${updatedAt}'),'${type}')")
     void  insert(UserModel userModel);
 
 
     @Select("select * from user where id = ${id}")
     List<UserModel> One(int id);
 
-    @Select("select * from user where openid = ${openid}")
-    List<UserModel> OneOpenid(Integer openid);
+    @Select("select * from user where openid = '${openid}'")
+    List<UserModel> OneOpenid(String openid);
 }

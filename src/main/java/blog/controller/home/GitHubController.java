@@ -73,13 +73,14 @@ public class GitHubController {
                 //System.out.println("登录用户信息:" + responseMap);//responseMap里面保存着用户登录信息
                 //System.out.println("获取登录用户的用户名:" + responseMap.get("login"));
 
-                Integer openid = Integer.parseInt(responseMap.get("id"));
+                String openid = responseMap.get("id");
                 List<UserModel> userModels = userMapper.OneOpenid(openid);
 
                 // 是否存在
                 if (CollectionUtils.isEmpty(userModels)){
                     // 保存用户信息
                     UserModel userModel = new UserModel();
+                    userModel.setType(1);
                     userModel.setEmail(responseMap.get("email"));
                     userModel.setName(responseMap.get("login"));
                     userModel.setAvatarUrl(responseMap.get("avatar_url"));

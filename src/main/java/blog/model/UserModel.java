@@ -21,7 +21,7 @@ public class UserModel implements Serializable {
     /**
      * 授权id
      */
-    private Integer openid;
+    private String openid;
     /**
      * 头像地址
      */
@@ -38,6 +38,16 @@ public class UserModel implements Serializable {
      * 修改时间
      */
     private String updatedAt;
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    private int type;
 
 
     public Integer getId() {
@@ -56,11 +66,11 @@ public class UserModel implements Serializable {
         this.name = name;
     }
 
-    public Integer getOpenid() {
+    public String getOpenid() {
         return openid;
     }
 
-    public void setOpenid(Integer openid) {
+    public void setOpenid(String openid) {
         this.openid = openid;
     }
 
