@@ -40,7 +40,7 @@ public class GitHubConstants {
         GitHubConstants.client_secret = client_secret;
     }
 
-    @Value("yunxiu.github.callback")
+    @Value("${yunxiu.github.callback}")
     public  void setCallback(String callback) {
         GitHubConstants.callback = callback;
     }

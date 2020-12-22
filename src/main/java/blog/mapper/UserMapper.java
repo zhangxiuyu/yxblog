@@ -13,7 +13,7 @@ import java.util.List;
 public interface UserMapper {
 
     // 插入数据
-    @Insert("insert into user (name,openid,avatar_url,email,created_at,updated_at,type) values ('${name}','${openid}','${avatarUrl}','${email}','${createdAt}','${updatedAt}'),'${type}')")
+    @Insert("insert into user (name,openid,avatar_url,email,created_at,updated_at,type) values ('${name}','${openid}','${avatarUrl}','${email}','${createdAt}','${updatedAt}','${type}')")
     void  insert(UserModel userModel);
 
 

@@ -31,9 +31,10 @@ public class GitHubController {
     public String githubUrl()
     {
 
-        String url = GitHubConstants.CODE_URL.replace("CLIENT_ID",GitHubConstants.getClient_id())
+        String url = GitHubConstants.CODE_URL
+                .replace("CLIENT_ID",GitHubConstants.getClient_id())
                 .replace("CALLBACK",GitHubConstants.getCallback());
-
+        System.out.println("github login err:" + url);
         return "redirect:" + url;
     }
 

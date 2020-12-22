@@ -66,7 +66,7 @@ public class QQController {
             userModel.setEmail("");
             userModel.setName(userInfo.getString("nickname"));
             userModel.setAvatarUrl(userInfo.getString("figureurl_qq"));
-            userModel.setType(1);
+            userModel.setType(2);
             userModel.setOpenid(openid);
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
             String date = df.format(new Date());
