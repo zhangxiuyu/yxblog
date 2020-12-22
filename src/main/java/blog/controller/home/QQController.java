@@ -5,16 +5,15 @@ import blog.mapper.UserMapper;
 import blog.model.UserModel;
 import blog.service.QQAuth;
 import blog.service.QQConstants;
+import blog.service.UserService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 @Controller
 public class QQController {
@@ -24,6 +23,9 @@ public class QQController {
 
     @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    UserService userService;
 
     @RequestMapping("/QQ")
     String QQ(){
@@ -55,12 +57,9 @@ public class QQController {
         // 获取用户信息
         JSONObject userInfo = QQAuth.getUserInfo(access_token,openid);
         //System.out.println("用户信息:"+userInfo);
-        assert openid != null;
-        List<UserModel> userModels = userMapper.OneOpenid(openid);
 
         // 是否存在
-        if (CollectionUtils.isEmpty(userModels)){
-
+        if (openid != null){
             // 保存用户信息
             UserModel userModel = new UserModel();
             userModel.setEmail("");
@@ -73,8 +72,9 @@ public class QQController {
             userModel.setCreatedAt(date);
             userModel.setUpdatedAt(date);
 
-            userMapper.insert(userModel);
+            userService.createOrUpdate(userModel);
         }
+
 
         return "redirect:/";
 

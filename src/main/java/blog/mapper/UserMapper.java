@@ -5,6 +5,7 @@ import blog.model.UserModel;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -22,4 +23,7 @@ public interface UserMapper {
 
     @Select("select * from user where openid = '${openid}'")
     List<UserModel> OneOpenid(String openid);
+
+    @Update("update user set name = '${name}',avatar_url = '${avatarUrl}', email = '${email}', updated_at = '${updatedAt}' where openid = ${openid}")
+    void update(UserModel userModelData);
 }
