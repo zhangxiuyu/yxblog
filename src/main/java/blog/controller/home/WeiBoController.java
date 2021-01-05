@@ -13,7 +13,6 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -71,14 +70,9 @@ public class WeiBoController {
 
                 userMapper.insert(userModel);
 
-                Object token =  util.createJWT(userModel);
-                HttpSession session = request.getSession();
-                session.setAttribute("token",token);
+                  util.createJWT(userModel,request);
             }else{
-
-                Object token =  util.createJWT(userModels);
-                HttpSession session = request.getSession();
-                session.setAttribute("token",token);
+                util.createJWT(userModels.get(0),request);
             }
 
 

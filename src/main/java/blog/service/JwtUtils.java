@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,7 +44,7 @@ public class JwtUtils {
      * @return
      * @throws Exception
      */
-    public Object createJWT(UserModel userModel) throws Exception {
+    public void createJWT(UserModel userModel, HttpServletRequest request) throws Exception {
 
         // 指定签名的时候使用的签名算法，也就是header那部分，jjwt已经将这部分内容封装好了。
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
@@ -76,7 +78,11 @@ public class JwtUtils {
         long expMillis = nowMillis + JwtConstant.JWT_TTL;
         Date exp = new Date(expMillis);
         builder.setExpiration(exp);
-        return builder.compact();
+        Object token = builder.compact();
+
+        // 将token 保存到session
+        HttpSession session = request.getSession();
+        session.setAttribute("token",token);
     }
 
     /**

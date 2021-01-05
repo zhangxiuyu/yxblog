@@ -41,4 +41,20 @@ public class IndexController {
     }
 
 
+    // 首页
+    @RequestMapping("/user/list")
+    String userlist(ModelMap mmap) {
+        // 获取数据
+        List<ArticleModel> article = articleMapper.getTopArticle();
+        List<ArticleLabelModel> articleLabelModelList = articleMapper.getArticleLabel();
+        List<ArticleTypeModel> articleTypeModelList = articleMapper.getArticType();
+        mmap.put("title",this.getTitle());
+        mmap.put("mu","index");
+        mmap.put("article",article);
+        mmap.put("article_label",articleLabelModelList);
+        mmap.put("article_type",articleTypeModelList);
+        return "home/index";
+    }
+
+
 }
