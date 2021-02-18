@@ -26,7 +26,7 @@ public class MyInterceptor implements HandlerInterceptor {
             response.setStatus(203);
             //未登录自动跳转界面
 //            response.sendRedirect("/");
-            return false;
+//            return false;
         }
         return true;
     }

@@ -17,29 +17,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(new MyInterceptor())
                 //添加拦截路径
                 .addPathPatterns(
-                        "/**"
-                )
-                //设置放行路径
-                .excludePathPatterns(
-                    "/",
-                    "/weibo",
-                    "/weiboLogin",
-                    "/QQ",
-                    "/QQLogin",
-                    "/githubUrl",
-                    "/gitHub",
-                    "/gitHub",
-                    "/article_type/**",
-                    "/article_type/**/**",
-                    "/article_type/**/**",
-                    "/article_label/**",
-                    "/article_label/**/**",
-                    "/article/**",
-                    "/articleList/**",
-                    "/articleList",
-                    "/articleHot",
-                    "/articleHot/**"
+                    ""
                 );
+                //设置放行路径
+//                .excludePathPatterns(
+//
+//                );
 
     }
 

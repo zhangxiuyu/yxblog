@@ -34,7 +34,7 @@ public class ArticleController {
 
         mmap.put("article",article);
         mmap.put("article_label",articleLabelModelList);
-        System.out.println(article);
+
 
         return "home/articleOne";
     }

@@ -2,11 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+
 </head>
 <body>
+
+
 <!--头部-->
 <div class="container header" th:fragment="top">
+
     <div class="row" >
         <div class="col-md-12 column" >
             <nav class="navbar navbar-default navbar-fixed-top " role="navigation">
@@ -136,19 +139,27 @@
     <footer class="footer  ">
         <div class="footer-container">
             <div class="col-md-12 column">
-                <p class="content-end">Copyright © 2013-2020 云秀  runoob.com All Rights Reserved. 备案号：闽ICP备15012807号-1</p>
+                <p class="content-end">Copyright © 2013-2020 云秀  ergouphp.cn All Rights Reserved. 备案号：冀ICP备19024778号 联系人邮箱：1292460369@qq.com</p>
             </div>
 
         </div>
     </footer>
-    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-    <script src="/js/jquery.min.js"></script>
+
 
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="/js/bootstrap.min.js"></script>
 
     <script>
-
+        $(function(){
+            $('.cherry').Cherry_Blossoms({
+                is_Cherry:true,//是否生成樱花
+                image_min:10,//花瓣最小宽度和高度
+                image_max:20,//花瓣最大宽度和高度
+                time_min:10000,//花瓣最快下坠时间
+                time_max:20000,//花瓣最慢下坠时间
+                interval:50//花瓣生成时间间隔
+            })
+        })
     </script>
 </div>
 </body>
